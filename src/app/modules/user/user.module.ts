@@ -7,6 +7,8 @@ import {UserService} from "./services/user.service";
 import { UserComponent } from './components/user/user.component';
 import { UsersComponent } from './components/users/users.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
+import {UsersResolver} from "./services/users.resolver";
+import {UserResolver} from "./services/user.resolver";
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
     UserRoutingModule
   ],
   providers: [
-    UserService
+    UserService,
+    UsersResolver,
+    UserResolver
   ]
 })
 export class UserModule { }

@@ -1,14 +1,20 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 
 import {CommentsComponent} from "./components/comments/comments.component";
 import {CommentDetailsComponent} from "./components/comment-details/comment-details.component";
+import {CommentsResolver} from "./services/comments.resolver";
+import {CommentResolver} from "./services/comment.resolver";
 
 const routes: Routes = [
   {
     path: '', component: CommentsComponent,
+    resolve: {commentData: CommentsResolver},
     children: [
-      {path: ':id', component: CommentDetailsComponent}
+      {
+        path: ':id', component: CommentDetailsComponent,
+        resolve: {commentData: CommentResolver}
+      }
     ]
   }
 ];
@@ -17,4 +23,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class CommentRoutingModule { }
+export class CommentRoutingModule {
+}
